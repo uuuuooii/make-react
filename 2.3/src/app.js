@@ -1,7 +1,7 @@
-import { createDOM } from './react';
+import { createDOM, render } from './react';
 // html을 객체로 만들고 -> 객체를 DOM으로 만든다
 
-// 1. 객체(가짜 DOM)
+// 객체(가짜 DOM)
 export const vdom = {
   tag: 'p',
   // 배열은 이름을 가질 수 없으니까 객체로
@@ -43,5 +43,5 @@ export const vdom = {
   ],
 };
 
-// 3. UI에 보여주기
-document.querySelector('#root').appendChild(createDOM(vdom));
+// UI에 보여주기
+render(vdom, document.querySelector('#root'));
