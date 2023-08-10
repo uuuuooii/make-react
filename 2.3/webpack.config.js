@@ -5,7 +5,7 @@ module.exports = {
   // 순서대로 실행
 
   mode: 'development',
-  entry: './app.js',
+  entry: './src/app.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',

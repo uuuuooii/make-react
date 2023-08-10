@@ -9,6 +9,12 @@ export const createDOM = (node) => {
   // 태그 만들기
   const element = document.createElement(node.tag);
 
+  // node 안에 들어가 있는 props 속성 안에는 키가 여러개 있다.
+  // 키를 Object.entries을 사용해서 문자열로 뺸다.
+  Object.entries(node.props).forEach(([key, value]) =>
+    element.setAttribute(key, value)
+  );
+
   // children 렌더링해주기
   node.children.map(createDOM).forEach(element.appendChild.bind(element));
 
