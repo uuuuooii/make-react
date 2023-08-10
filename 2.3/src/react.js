@@ -23,12 +23,8 @@ export function createDOM(node) {
 }
 
 //  tag, props, children 3개의 속성을 갖고 있는 객체를 반복 호출
-export function createElement() {
-  return {
-    tag: 'h1',
-    props: {},
-    children: ['React 만들기'],
-  };
+export function createElement(tag, props, ...children) {
+  return { tag, props, children };
 }
 
 // UI에 보여주기에서  container.appendChild(createDOM(vdom)) 이 내부 구조를
