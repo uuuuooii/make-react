@@ -24,6 +24,8 @@ export function createDOM(node) {
 
 //  tag, props, children 3개의 속성을 갖고 있는 객체를 반복 호출
 export function createElement(tag, props, ...children) {
+  props = props || {};
+
   return { tag, props, children };
 }
 
