@@ -26,7 +26,11 @@ export function createDOM(node) {
 export function createElement(tag, props, ...children) {
   props = props || {};
 
-  return { tag, props, children };
+  if (typeof tag === 'function') {
+    return tag(props);
+  } else {
+    return { tag, props, children };
+  }
 }
 
 // UI에 보여주기에서  container.appendChild(createDOM(vdom)) 이 내부 구조를
