@@ -27,7 +27,14 @@ export function createElement(tag, props, ...children) {
   props = props || {};
 
   if (typeof tag === 'function') {
-    return tag(props);
+    if (children.length > 0) {
+      return tag({
+        ...props,
+        children: children,
+      });
+    } else {
+      return tag(props);
+    }
   } else {
     return { tag, props, children };
   }
