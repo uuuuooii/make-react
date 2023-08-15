@@ -47,16 +47,16 @@ export function createElement(tag, props, ...children) {
 
       // render 함수의 반환값은 jsx니까 render를 return 해준다.
       return instance.render();
-    } else {
-      if (children.length > 0) {
-        return tag(makeProps(props, children));
-      } else {
-        return tag(props);
-      }
     }
-  } else {
-    return { tag, props, children };
+
+    if (children.length > 0) {
+      return tag(makeProps(props, children));
+    } else {
+      return tag(props);
+    }
   }
+
+  return { tag, props, children };
 }
 
 // UI에 보여주기에서  container.appendChild(createDOM(vdom)) 이 내부 구조를
