@@ -1,15 +1,19 @@
 /* @jsx createElement */
 import { render, createElement } from './react';
 
-function Title(props) {
-  return <h1>{props.children}</h1>;
+// react class
+class Title extends Component {
+  render() {
+    return <h1>{props.children}</h1>;
+  }
 }
 
 function Item(props) {
   return <li style={`color: ${props.color}`}>{props.children}</li>;
 }
 
-const vdom = (
+// react function
+const App = () => (
   <p>
     <Title>React 만들기</Title>
     <ul>
@@ -20,6 +24,5 @@ const vdom = (
   </p>
 );
 
-console.log(vdom);
 // UI에 보여주기
-render(vdom, document.querySelector('#root'));
+render(<App />, document.querySelector('#root'));

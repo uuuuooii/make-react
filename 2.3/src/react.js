@@ -1,5 +1,11 @@
 // 여기는 react가 제공하는 기능을 적는 곳입니다.
 
+// react class
+export class Component {
+  constructor() {}
+}
+
+// react function
 // 객체를 입력으로 받아서 DOM으로 변환하는 함수, DOM 만들기
 // createDOM
 export function createDOM(node) {
