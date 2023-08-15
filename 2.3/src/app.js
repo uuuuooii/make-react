@@ -1,18 +1,18 @@
 /* @jsx createElement */
-import { render, createElement } from './react';
+import { render, createElement, Component } from './react';
 
 // react class
 class Title extends Component {
   render() {
-    return <h1>{props.children}</h1>;
+    return <h1>{this.props.children}</h1>;
   }
 }
 
+// react function
 function Item(props) {
   return <li style={`color: ${props.color}`}>{props.children}</li>;
 }
 
-// react function
 const App = () => (
   <p>
     <Title>React 만들기</Title>

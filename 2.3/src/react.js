@@ -2,7 +2,9 @@
 
 // react class
 export class Component {
-  constructor() {}
+  constructor(props) {
+    this.props = props;
+  }
 }
 
 // react function
@@ -28,18 +30,29 @@ export function createDOM(node) {
   return element;
 }
 
+function makeProps(props, children) {
+  return {
+    ...props,
+    children: children.length === 1 ? children[0] : children,
+  };
+}
+
 //  tag, props, children 3개의 속성을 갖고 있는 객체를 반복 호출
 export function createElement(tag, props, ...children) {
   props = props || {};
 
   if (typeof tag === 'function') {
-    if (children.length > 0) {
-      return tag({
-        ...props,
-        children: children.length === 1 ? children[0] : children,
-      });
+    if (tag.prototype instanceof Component) {
+      const instance = new tag(makeProps(props, children));
+
+      // render 함수의 반환값은 jsx니까 render를 return 해준다.
+      return instance.render();
     } else {
-      return tag(props);
+      if (children.length > 0) {
+        return tag(makeProps(props, children));
+      } else {
+        return tag(props);
+      }
     }
   } else {
     return { tag, props, children };
