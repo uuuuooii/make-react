@@ -2,6 +2,7 @@
 
 // Hook
 const hooks = [];
+let currentComponents = 0;
 
 // react class
 export class Component {
@@ -40,6 +41,20 @@ function makeProps(props, children) {
   };
 }
 
+function useState(initValue) {
+  let position = currentComponent - 1;
+
+  if (!hooks[position]) {
+    hooks[position] = initValue;
+  }
+
+  const modifier = (nextValue) => {
+    hooks[position] = nextValue;
+  };
+
+  return [hooks[position], modifier];
+}
+
 //  tag, props, children 3개의 속성을 갖고 있는 객체를 반복 호출
 export function createElement(tag, props, ...children) {
   props = props || {};
@@ -51,6 +66,10 @@ export function createElement(tag, props, ...children) {
       // render 함수의 반환값은 jsx니까 render를 return 해준다.
       return instance.render();
     }
+
+    // Hook 생성
+    hooks[currentComponents] = null;
+    currentComponents++;
 
     if (children.length > 0) {
       return tag(makeProps(props, children));
