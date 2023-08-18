@@ -61,9 +61,9 @@ export function createElement(tag, props, ...children) {
 
 // UI에 보여주기에서  container.appendChild(createDOM(vdom)) 이 내부 구조를
 // 굳이 알려줄 필요가 없으니까 react로 가져옴
-export function render(vdom, container) {
-  container.appendChild(createDOM(vdom));
-}
+// export function render(vdom, container) {
+//   container.appendChild(createDOM(vdom));
+// }
 
 export const render = (function () {
   let prevDom = null;
