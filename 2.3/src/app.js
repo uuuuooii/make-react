@@ -26,3 +26,5 @@ const App = () => (
 
 // UI에 보여주기
 render(<App />, document.querySelector('#root'));
+
+console.log(<App />);

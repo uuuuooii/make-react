@@ -1,5 +1,8 @@
 // 여기는 react가 제공하는 기능을 적는 곳입니다.
 
+// Hook
+const hooks = [];
+
 // react class
 export class Component {
   constructor(props) {
